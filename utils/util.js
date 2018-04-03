@@ -14,6 +14,11 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const isObjectEmpty = obj => {
+  return Object.keys(obj).length === 0 && obj.constructor === Object
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  isObjectEmpty: isObjectEmpty
 }
