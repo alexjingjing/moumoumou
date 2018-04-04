@@ -2,7 +2,6 @@
 //获取应用实例
 const AV = require('../../utils/av-live-query-weapp-min');
 const util = require('../../utils/util.js');
-const UserInfo = require('../../model/user-info');
 const UserScore = require('../../model/user-score');
 const app = getApp()
 var context;
@@ -32,9 +31,6 @@ Page({
   },
   //事件处理函数
   bindViewTap: function () {
-    // wx.navigateTo({
-    //   url: '../logs/logs'
-    // })
     context = this;
     this.cancel();
     this.start();
@@ -63,7 +59,7 @@ Page({
       this.login().then(user => this.saveUserInfo(user, score)).catch(error => console.error(error.message));
     }
     var acl = new AV.ACL();
-    acl.setPublicReadAccess(false);
+    acl.setPublicReadAccess(true);
     acl.setPublicWriteAccess(false);
     acl.setReadAccess(user, true);
     acl.setWriteAccess(user, true);
@@ -109,6 +105,14 @@ Page({
   },
   onLoad: function () {
     console.log('page load');
+    wx.getSystemInfo({
+      success: res => {
+        this.setData({
+          winWidth: res.windowWidth,
+          winheight: res.windowHeight
+        });
+      }
+    });
     wx.downloadFile({
       url: "https://lc-hemv1boJ.cn-n1.lcfile.com/4c0e011c174cf249befa.mp3",
       success: res => {
@@ -160,25 +164,8 @@ Page({
   },
   saveUserInfo: function (user, userInfo) {
     if (!util.isObjectEmpty(user) && !util.isObjectEmpty(userInfo)) {
-      const query = new AV.Query(UserInfo)
-        .equalTo('user', AV.Object.createWithoutData('User', user.id));
-      query.find().then(result => {
-        if (result.length == 0) {
-          // 没有相关数据
-          // 可以添加
-          var acl = new AV.ACL();
-          acl.setPublicReadAccess(false);
-          acl.setPublicWriteAccess(false);
-          acl.setReadAccess(user, true);
-          acl.setWriteAccess(user, true);
-          new UserInfo({
-            user: user,
-            info: userInfo
-          }).setACL(acl).save().then((result) => {
-            console.log(result);
-          }).catch(error => this.showNetworkError());
-        }
-      });
+      user.set('info', userInfo);
+      user.save();
     }
   },
   showNetworkError: function () {
@@ -194,7 +181,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '自定义转发标题',
+      title: '快来跟我玩哞哞牧场',
       path: '/page/index',
       success: function (res) {
         // 转发成功
@@ -203,5 +190,10 @@ Page({
         // 转发失败
       }
     }
+  },
+  goToScoreBoard: function() {
+    wx.navigateTo({
+      url: '../scoreboard/scoreboard'
+    })
   }
 })
