@@ -25,9 +25,10 @@ Page({
     this.getScoreBoard();
   },
   getScoreBoard: function() {
+    console.log(new Date(util.getQueryDate7(new Date())));
     const query = new AV.Query(UserScore).include(['user'])
-      .greaterThan('score', 0).descending('score');
-    query.limit(10);
+      .greaterThan('updatedAt', new Date(util.getQueryDate7(new Date()))).greaterThan('score', 0).descending('score');
+    query.limit(8);
     query.find().then(result => {
       console.log(result);
       this.setData({

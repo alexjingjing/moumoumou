@@ -1,3 +1,11 @@
+const getQueryDate7 = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate() - 7
+
+  return [year, month, day].map(formatNumber).join('-')
+}
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -20,5 +28,6 @@ const isObjectEmpty = obj => {
 
 module.exports = {
   formatTime: formatTime,
-  isObjectEmpty: isObjectEmpty
+  isObjectEmpty: isObjectEmpty,
+  getQueryDate7: getQueryDate7
 }

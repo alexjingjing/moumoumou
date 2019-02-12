@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/scoreboard/scoreboard",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/about/about"
   ],
   "window":{
     "backgroundTextStyle":"light",

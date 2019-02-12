@@ -1,10 +1,13 @@
 <!--scoreboard.wxml-->
-<view class="background" style="width:{{winWidth}}px;height:{{winheight}}px;padding-top:40rpx">
-  <block wx:for="{{scoreboard}}" wx:for-item="score" class="log-list">
-    <view class="log-item">
-      <image class="avatar" src="{{score.user.info.avatarUrl}}"></image>
-      <text class='nickname'>{{score.user.info.nickName}}</text>
-      <text style='margin-left: 80rpx; margin-top:20rpx'>{{score.score}}次抚摸</text>
-    </view>
-  </block>
+<view>
+  <view class="background" style="width:{{winWidth}}px;height:{{winheight}}px;padding-top:40rpx">
+    <block wx:for="{{scoreboard}}" wx:for-item="score" class="log-list">
+      <view class="log-item">
+        <image class="avatar" src="{{score.user.info.avatarUrl}}"></image>
+        <text class='nickname'>{{score.user.info.nickName}}</text>
+        <text style='margin-left: 80rpx; margin-top:20rpx'>{{score.score}}次抚摸</text>
+      </view>
+    </block>
+  </view>
+  <ad class='ad-banner' unit-id="adunit-166644d23ae5863a"></ad>
 </view>

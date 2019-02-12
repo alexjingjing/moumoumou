@@ -10,5 +10,9 @@
   <view class="usermotto">
     <text class="user-motto">抚摸次数：{{score}}</text>
   </view>
-  <button style='margin-top: 20px;' bindtap='goToScoreBoard'> 看看排行榜 </button>
+  <view>
+    <button bindtap='goToScoreBoard'> 看看排行榜 </button>
+    <button style='margin-top: 10px;' bindtap='goToAboutUs'> 关于我们 </button>
+  </view>
+  <ad style='bottom:15rpx; margin-top: 30rpx;' unit-id="adunit-56779c1f34a6423e"></ad>
 </view>

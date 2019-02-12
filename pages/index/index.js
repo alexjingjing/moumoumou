@@ -182,7 +182,7 @@ Page({
     }
     return {
       title: '快来跟我玩哞哞牧场',
-      path: '/page/index',
+      path: '/pages/index/index',
       success: function (res) {
         // 转发成功
       },
@@ -194,6 +194,11 @@ Page({
   goToScoreBoard: function() {
     wx.navigateTo({
       url: '../scoreboard/scoreboard'
+    })
+  },
+  goToAboutUs: function() {
+    wx.navigateTo({
+      url: '../about/about'
     })
   }
 })

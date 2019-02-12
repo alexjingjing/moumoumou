@@ -1,3 +1,9 @@
+.ad-banner {
+  position: fixed;
+  bottom: 5rpx;
+  margin: 10rpx;
+}
+
 .container {
   display: flex;
   flex-direction: column;

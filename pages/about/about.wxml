@@ -1,0 +1,18 @@
+<!--about.wxml-->
+<view class="container row-center">
+  <text class='title'>关于哞哞牧场</text>
+  <text class='content'>受某本书启发</text>
+  <text class='content'>欢迎大家来抚摸自己的牛牛</text>
+  <text class='content'>我自己感觉挺解压的</text>
+  <text class='content'>会根据大家的反馈定期更新小程序</text>
+  <text class='content'>还会有如下更新：</text>
+  <text class='content'>1、好友pk</text>
+  <text class='content'>2、更多奶牛形象</text>
+  <text class='content'>3、更多牛牛的声音</text>
+  <text class='content'>4、界面优化</text>
+  <text class='content'>......</text>
+  <text class='content'>不走心的关于小程序</text>
+  <text class='content'>先做成这样吧</text>
+  <text class='content'>作者：</text>
+  <text class='content'>一二三亖三二一</text>
+</view>
