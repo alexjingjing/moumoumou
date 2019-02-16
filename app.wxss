@@ -1,7 +1,17 @@
 /**app.wxss**/
+.ad-banner-bottom {
+  position: fixed;
+  bottom: 15rpx;
+  padding: 10rpx;
+}
+
+button {
+  width: 50%;
+}
+
 .container {
   height: 100%;
-  display: flex;
+  display: block;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;

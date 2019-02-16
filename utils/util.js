@@ -1,9 +1,14 @@
-const getQueryDate7 = date => {
+const getQueryDate = (span, date) => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
-  const day = date.getDate() - 7
+  const day = date.getDate() - span
 
-  return [year, month, day].map(formatNumber).join('-')
+  var newDate = new Date(year, month-1, day);
+  const newYear = newDate.getFullYear()
+  const newMonth = newDate.getMonth() + 1
+  const newDay = newDate.getDate()
+  
+  return [newYear, newMonth, newDay].map(formatNumber).join('-')
 }
 
 const formatTime = date => {
@@ -29,5 +34,5 @@ const isObjectEmpty = obj => {
 module.exports = {
   formatTime: formatTime,
   isObjectEmpty: isObjectEmpty,
-  getQueryDate7: getQueryDate7
+  getQueryDate: getQueryDate
 }

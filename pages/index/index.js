@@ -46,13 +46,15 @@ Page({
     timer = setTimeout(function () {
       console.log("----Countdown----");
       clearTimeout(timer);
-      context.uploadScore(context.data.score);
-      context.setData({
-        score: 0
-      })
+      if (context.data.score > 0) {
+        context.uploadScore(context.data.score, function(){});
+        context.setData({
+          score: 0
+        })
+      }
     }, 2500);
   },
-  uploadScore: function (score) {
+  uploadScore: function (score, success) {
     console.log(score)
     var user = AV.User.current()
     if (util.isObjectEmpty(user)) {
@@ -73,13 +75,17 @@ Page({
         // 修改属性
         userScore.set('score', score);
         // 保存到云端
-        userScore.save();
+        userScore.save().then((result) => {
+          console.log(result);
+          success();
+        }).catch(error => this.showNetworkError());
       } else {
         new UserScore({
           user: user,
           score: score
         }).setACL(acl).save().then((result) => {
           console.log(result);
+          success();
         }).catch(error => this.showNetworkError());
       }
     })
@@ -154,6 +160,14 @@ Page({
       })
     }
   },
+  onUnload: function () {
+    if (this.data.score > 0) {
+      this.uploadScore(this.data.score, function(){});
+      this.setData({
+        score: 0
+      });
+    }
+  },
   getUserInfo: function (e) {
     this.saveUserInfo(AV.User.current(), e.detail.userInfo);
     app.globalData.userInfo = e.detail.userInfo
@@ -191,14 +205,36 @@ Page({
       }
     }
   },
-  goToScoreBoard: function() {
-    wx.navigateTo({
-      url: '../scoreboard/scoreboard'
-    })
+  goToScoreBoard: function () {
+    if (this.data.score > 0) {
+      this.uploadScore(this.data.score, function() {
+        wx.navigateTo({
+          url: '../scoreboard/scoreboard'
+        })
+      });
+      this.setData({
+        score: 0
+      });
+    } else {
+      wx.navigateTo({
+        url: '../scoreboard/scoreboard'
+      })
+    }
   },
-  goToAboutUs: function() {
-    wx.navigateTo({
-      url: '../about/about'
-    })
+  goToAboutUs: function () {
+    if (this.data.score > 0) {
+      this.uploadScore(this.data.score, function() {
+        wx.navigateTo({
+          url: '../scoreboard/scoreboard'
+        })
+      });
+      this.setData({
+        score: 0
+      });
+    } else {
+      wx.navigateTo({
+        url: '../about/about'
+      })
+    }
   }
 })

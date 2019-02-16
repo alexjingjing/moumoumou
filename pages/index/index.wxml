@@ -8,11 +8,11 @@
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">抚摸次数：{{score}}</text>
+    <text>抚摸次数：{{score}}</text>
   </view>
   <view>
     <button bindtap='goToScoreBoard'> 看看排行榜 </button>
     <button style='margin-top: 10px;' bindtap='goToAboutUs'> 关于我们 </button>
   </view>
-  <ad style='bottom:15rpx; margin-top: 30rpx;' unit-id="adunit-56779c1f34a6423e"></ad>
+  <ad class='ad-banner-bottom' unit-id="adunit-56779c1f34a6423e"></ad>
 </view>

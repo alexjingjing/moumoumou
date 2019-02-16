@@ -1,10 +1,4 @@
 /**index.wxss**/
-.ad-banner {
-  position: fixed;
-  bottom: 15rpx;
-  padding: 10rpx;
-}
-
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -25,5 +19,7 @@
 }
 
 .usermotto {
-  margin-top: 80px;
+  margin-top: 40rpx;
+  margin-bottom: 15rpx;
+  text-align: center;
 }
